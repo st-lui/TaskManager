@@ -11,9 +11,11 @@ namespace TaskManager
 	{
 		static Thread updaterThread;
 		static bool isRunning;
+		static ProcessDiffer processDiffer;
 
 		public static void Start()
 		{
+			processDiffer = new ProcessDiffer();
 			ThreadStart threadStart = new ThreadStart(UpdateRunner);
 			isRunning = true;
 			updaterThread = new Thread(threadStart);
@@ -49,8 +51,10 @@ namespace TaskManager
 					pl.List.Add(p);
 				}
 				pl.List.Sort(delegate (Process a, Process b) { return a.ProcessName.CompareTo(b.ProcessName); });
+				processDiffer.Add(pl.List);
+				ProcessList.Unlock();
+				processDiffer.CompareHashes();
 			}
-			ProcessList.Unlock();
 		}
 
 		public static void UpdateRunner()

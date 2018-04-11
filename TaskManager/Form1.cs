@@ -18,7 +18,6 @@ namespace TaskManager
 	{
 		ProcessList processList;
 		BindingSource processBindingSource;
-
 		private void Initialize()
 		{
 			processBindingSource = new BindingSource();
@@ -47,10 +46,10 @@ namespace TaskManager
 				processBindingSource.Clear();
 				foreach (Process p in processList.List)
 					processBindingSource.Add(p);
+				ProcessList.Unlock();
 				processBindingSource.Position = Math.Min(processGridView.RowCount, Math.Max(0, position));
 				processGridView.FirstDisplayedScrollingRowIndex = Math.Min(processGridView.RowCount, Math.Max(0, scrollTo));
 				totalProcessToolStripStatusLabel.Text = processList.List.Count.ToString();
-				ProcessList.Unlock();
 			}
 			else
 				LogClass.GetInstance().Warn("Список процессов заблокирован для доступа");
