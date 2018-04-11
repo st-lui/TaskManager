@@ -18,20 +18,24 @@ namespace TaskManager
 			isRunning = true;
 			updaterThread = new Thread(threadStart);
 			updaterThread.Start();
+			LogClass.GetInstance().Info("Запущен поток мониторинга");
 		}
 
 		public static void Abort()
 		{
 			updaterThread.Abort();
+			LogClass.GetInstance().Info("Прекращена работа потока мониторинга");
 		}
 
 		public static void Resume()
 		{
+			LogClass.GetInstance().Info("Получен запрос на возобновление мониторинга");
 			isRunning = true;
 		}
 
 		public static void Suspend()
 		{
+			LogClass.GetInstance().Info("Получен запрос на приостановку мониторинга");
 			isRunning = false;
 		}
 		public static void Update()

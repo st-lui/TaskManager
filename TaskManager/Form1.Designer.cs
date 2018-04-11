@@ -36,11 +36,10 @@
 			this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.totalProcessToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.processGridView = new System.Windows.Forms.DataGridView();
 			this.processName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.memoryLoad = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.resumeToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -57,7 +56,9 @@
 			this.cpuTimeLabel = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.threadsLabel = new System.Windows.Forms.Label();
-			this.cmdLineLabel = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.ownerNameLabel = new System.Windows.Forms.Label();
+			this.processInfo = new System.Windows.Forms.Button();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.processGridView)).BeginInit();
@@ -71,7 +72,7 @@
             this.файлToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(483, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(635, 24);
 			this.menuStrip1.TabIndex = 3;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -93,13 +94,18 @@
 			// statusStrip1
 			// 
 			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.totalProcessToolStripStatusLabel});
-			this.statusStrip1.Location = new System.Drawing.Point(0, 240);
+            this.totalProcessToolStripStatusLabel,
+            this.toolStripStatusLabel1});
+			this.statusStrip1.Location = new System.Drawing.Point(0, 272);
 			this.statusStrip1.Name = "statusStrip1";
-			this.statusStrip1.Size = new System.Drawing.Size(483, 22);
+			this.statusStrip1.Size = new System.Drawing.Size(635, 22);
 			this.statusStrip1.TabIndex = 4;
 			this.statusStrip1.Text = "statusStrip1";
+			// 
+			// totalProcessToolStripStatusLabel
+			// 
+			this.totalProcessToolStripStatusLabel.Name = "totalProcessToolStripStatusLabel";
+			this.totalProcessToolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
 			// 
 			// toolStripStatusLabel1
 			// 
@@ -107,16 +113,12 @@
 			this.toolStripStatusLabel1.Size = new System.Drawing.Size(71, 17);
 			this.toolStripStatusLabel1.Text = "Процессов:";
 			// 
-			// totalProcessToolStripStatusLabel
-			// 
-			this.totalProcessToolStripStatusLabel.Name = "totalProcessToolStripStatusLabel";
-			this.totalProcessToolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
-			// 
 			// processGridView
 			// 
 			this.processGridView.AllowUserToAddRows = false;
 			this.processGridView.AllowUserToDeleteRows = false;
 			this.processGridView.AllowUserToOrderColumns = true;
+			this.processGridView.AllowUserToResizeRows = false;
 			this.processGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
 			this.processGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
@@ -130,8 +132,7 @@
 			this.processGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this.processGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.processGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.processName,
-            this.memoryLoad});
+            this.processName});
 			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
 			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -146,7 +147,7 @@
 			this.processGridView.ReadOnly = true;
 			this.processGridView.RowHeadersVisible = false;
 			this.processGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.processGridView.Size = new System.Drawing.Size(269, 185);
+			this.processGridView.Size = new System.Drawing.Size(269, 217);
 			this.processGridView.TabIndex = 5;
 			this.processGridView.SelectionChanged += new System.EventHandler(this.processGridView_SelectionChanged);
 			// 
@@ -157,13 +158,6 @@
 			this.processName.Name = "processName";
 			this.processName.ReadOnly = true;
 			this.processName.Width = 120;
-			// 
-			// memoryLoad
-			// 
-			this.memoryLoad.HeaderText = "Память";
-			this.memoryLoad.Name = "memoryLoad";
-			this.memoryLoad.ReadOnly = true;
-			this.memoryLoad.Width = 71;
 			// 
 			// timer1
 			// 
@@ -177,7 +171,7 @@
             this.suspendToolStripButton});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 24);
 			this.toolStrip1.Name = "toolStrip1";
-			this.toolStrip1.Size = new System.Drawing.Size(483, 25);
+			this.toolStrip1.Size = new System.Drawing.Size(635, 25);
 			this.toolStrip1.TabIndex = 6;
 			this.toolStrip1.Text = "toolStrip1";
 			// 
@@ -206,7 +200,7 @@
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label1.Location = new System.Drawing.Point(287, 52);
+			this.label1.Location = new System.Drawing.Point(293, 84);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(142, 13);
 			this.label1.TabIndex = 8;
@@ -215,12 +209,12 @@
 			// processNameLabel
 			// 
 			this.processNameLabel.AutoSize = true;
+			this.processNameLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.processNameLabel.Location = new System.Drawing.Point(103, 4);
 			this.processNameLabel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
 			this.processNameLabel.Name = "processNameLabel";
-			this.processNameLabel.Size = new System.Drawing.Size(66, 17);
+			this.processNameLabel.Size = new System.Drawing.Size(0, 13);
 			this.processNameLabel.TabIndex = 9;
-			this.processNameLabel.Text = "processNameLabel";
 			// 
 			// tableLayoutPanel1
 			// 
@@ -239,8 +233,10 @@
 			this.tableLayoutPanel1.Controls.Add(this.cpuTimeLabel, 1, 3);
 			this.tableLayoutPanel1.Controls.Add(this.label2, 0, 4);
 			this.tableLayoutPanel1.Controls.Add(this.threadsLabel, 1, 4);
-			this.tableLayoutPanel1.Controls.Add(this.cmdLineLabel, 1, 5);
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(290, 68);
+			this.tableLayoutPanel1.Controls.Add(this.label5, 0, 5);
+			this.tableLayoutPanel1.Controls.Add(this.ownerNameLabel, 1, 5);
+			this.tableLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(296, 100);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 8;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
@@ -251,16 +247,17 @@
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(175, 169);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(327, 169);
 			this.tableLayoutPanel1.TabIndex = 10;
 			// 
 			// label3
 			// 
 			this.label3.AutoSize = true;
+			this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label3.Location = new System.Drawing.Point(3, 4);
 			this.label3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(80, 13);
+			this.label3.Size = new System.Drawing.Size(82, 13);
 			this.label3.TabIndex = 10;
 			this.label3.Text = "Имя процесса";
 			// 
@@ -270,19 +267,19 @@
 			this.label4.Location = new System.Drawing.Point(3, 25);
 			this.label4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(25, 13);
+			this.label4.Size = new System.Drawing.Size(24, 13);
 			this.label4.TabIndex = 11;
 			this.label4.Text = "PID";
 			// 
 			// pidLabel
 			// 
 			this.pidLabel.AutoSize = true;
+			this.pidLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.pidLabel.Location = new System.Drawing.Point(103, 25);
 			this.pidLabel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
 			this.pidLabel.Name = "pidLabel";
-			this.pidLabel.Size = new System.Drawing.Size(35, 13);
+			this.pidLabel.Size = new System.Drawing.Size(0, 13);
 			this.pidLabel.TabIndex = 15;
-			this.pidLabel.Text = "label2";
 			// 
 			// label6
 			// 
@@ -300,9 +297,8 @@
 			this.memoryLabel.Location = new System.Drawing.Point(103, 46);
 			this.memoryLabel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
 			this.memoryLabel.Name = "memoryLabel";
-			this.memoryLabel.Size = new System.Drawing.Size(68, 17);
+			this.memoryLabel.Size = new System.Drawing.Size(0, 13);
 			this.memoryLabel.TabIndex = 17;
-			this.memoryLabel.Text = "Пользователь";
 			// 
 			// label7
 			// 
@@ -310,7 +306,7 @@
 			this.label7.Location = new System.Drawing.Point(3, 67);
 			this.label7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(59, 13);
+			this.label7.Size = new System.Drawing.Size(60, 13);
 			this.label7.TabIndex = 14;
 			this.label7.Text = "Время ЦП";
 			// 
@@ -320,9 +316,8 @@
 			this.cpuTimeLabel.Location = new System.Drawing.Point(103, 67);
 			this.cpuTimeLabel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
 			this.cpuTimeLabel.Name = "cpuTimeLabel";
-			this.cpuTimeLabel.Size = new System.Drawing.Size(68, 17);
+			this.cpuTimeLabel.Size = new System.Drawing.Size(0, 13);
 			this.cpuTimeLabel.TabIndex = 18;
-			this.cpuTimeLabel.Text = "Пользователь";
 			// 
 			// label2
 			// 
@@ -330,7 +325,7 @@
 			this.label2.Location = new System.Drawing.Point(3, 88);
 			this.label2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(83, 13);
+			this.label2.Size = new System.Drawing.Size(87, 13);
 			this.label2.TabIndex = 19;
 			this.label2.Text = "Число потоков";
 			// 
@@ -340,25 +335,44 @@
 			this.threadsLabel.Location = new System.Drawing.Point(103, 88);
 			this.threadsLabel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
 			this.threadsLabel.Name = "threadsLabel";
-			this.threadsLabel.Size = new System.Drawing.Size(68, 17);
+			this.threadsLabel.Size = new System.Drawing.Size(0, 13);
 			this.threadsLabel.TabIndex = 20;
-			this.threadsLabel.Text = "Пользователь";
 			// 
-			// cmdLineLabel
+			// label5
 			// 
-			this.cmdLineLabel.AutoSize = true;
-			this.cmdLineLabel.Location = new System.Drawing.Point(103, 109);
-			this.cmdLineLabel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
-			this.cmdLineLabel.Name = "cmdLineLabel";
-			this.cmdLineLabel.Size = new System.Drawing.Size(68, 17);
-			this.cmdLineLabel.TabIndex = 21;
-			this.cmdLineLabel.Text = "Пользователь";
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(3, 109);
+			this.label5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(57, 13);
+			this.label5.TabIndex = 21;
+			this.label5.Text = "Владелец";
+			// 
+			// ownerNameLabel
+			// 
+			this.ownerNameLabel.AutoSize = true;
+			this.ownerNameLabel.Location = new System.Drawing.Point(103, 109);
+			this.ownerNameLabel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
+			this.ownerNameLabel.Name = "ownerNameLabel";
+			this.ownerNameLabel.Size = new System.Drawing.Size(0, 13);
+			this.ownerNameLabel.TabIndex = 22;
+			// 
+			// processInfo
+			// 
+			this.processInfo.Location = new System.Drawing.Point(296, 52);
+			this.processInfo.Name = "processInfo";
+			this.processInfo.Size = new System.Drawing.Size(76, 29);
+			this.processInfo.TabIndex = 11;
+			this.processInfo.Text = "Подробнее";
+			this.processInfo.UseVisualStyleBackColor = true;
+			this.processInfo.Click += new System.EventHandler(this.processInfo_Click);
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(483, 262);
+			this.ClientSize = new System.Drawing.Size(635, 294);
+			this.Controls.Add(this.processInfo);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.toolStrip1);
@@ -396,8 +410,6 @@
 		private System.Windows.Forms.ToolStrip toolStrip1;
 		private System.Windows.Forms.ToolStripButton resumeToolStripButton;
 		private System.Windows.Forms.ToolStripButton suspendToolStripButton;
-		private System.Windows.Forms.DataGridViewTextBoxColumn processName;
-		private System.Windows.Forms.DataGridViewTextBoxColumn memoryLoad;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label processNameLabel;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -410,7 +422,10 @@
 		private System.Windows.Forms.Label cpuTimeLabel;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label threadsLabel;
-		private System.Windows.Forms.Label cmdLineLabel;
+		private System.Windows.Forms.DataGridViewTextBoxColumn processName;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.Label ownerNameLabel;
+		private System.Windows.Forms.Button processInfo;
 	}
 }
 
