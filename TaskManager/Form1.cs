@@ -35,7 +35,9 @@ namespace TaskManager
 			InitializeComponent();
 			Initialize();
 		}
-
+		/// <summary>
+		/// Обновление интерфейса в соответствии со списком процессов
+		/// </summary>
 		private void UpdateInterface()
 		{
 			processList = ProcessList.TryGetInstance();
@@ -49,12 +51,17 @@ namespace TaskManager
 				ProcessList.Unlock();
 				processBindingSource.Position = Math.Min(processGridView.RowCount, Math.Max(0, position));
 				processGridView.FirstDisplayedScrollingRowIndex = Math.Min(processGridView.RowCount, Math.Max(0, scrollTo));
-				totalProcessToolStripStatusLabel.Text = processList.List.Count.ToString();
+				totalProcessToolStripStatusLabel.Text = processBindingSource.Count.ToString();
 			}
 			else
 				LogClass.GetInstance().Warn("Список процессов заблокирован для доступа");
 		}
 
+		/// <summary>
+		/// Получение имени пользователя - владельца процесса
+		/// </summary>
+		/// <param name="processId">Идендификатор процесса (pid)</param>
+		/// <returns></returns>
 		public string GetProcessOwner(int processId)
 		{
 			try
@@ -84,7 +91,10 @@ namespace TaskManager
 			return "ошибка";
 		}
 
-		private void UpdateProcessInfo()
+		/// <summary>
+		/// Получение подробной информации о процессе
+		/// </summary>
+		private void GetProcessInfo()
 		{
 			if (processBindingSource.Current != null)
 			{
@@ -145,14 +155,9 @@ namespace TaskManager
 			Close();
 		}
 
-		private void processGridView_SelectionChanged(object sender, EventArgs e)
-		{
-			//UpdateProcessInfo();
-		}
-
 		private void processInfo_Click(object sender, EventArgs e)
 		{
-			UpdateProcessInfo();
+			GetProcessInfo();
 		}
 	}
 }

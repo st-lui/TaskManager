@@ -4,9 +4,18 @@ using System.Diagnostics;
 
 namespace TaskManager
 {
+	/// <summary>
+	/// Класс для сравнения старого и нового списка процессов по именам и идентификаторам
+	/// </summary>
 	public class ProcessDiffer
 	{
+		/// <summary>
+		/// Массив из двух множеств для быстрого сравнения
+		/// </summary>
 		HashSet<string>[] hashSet;
+		/// <summary>
+		/// Индексы для доступа к старому и новому спискам процессов
+		/// </summary>
 		int oldId, newId;
 
 		public ProcessDiffer()
@@ -16,6 +25,11 @@ namespace TaskManager
 			newId = 1;
 		}
 
+		/// <summary>
+		/// Заполняет множество строками вида "<имя процесса> <pid>" из списка процессов
+		/// </summary>
+		/// <param name="hashId">Индекс множества для заполнения</param>
+		/// <param name="processes">Список процессов для добавления в множество</param>
 		void FillHash(int hashId, List<Process> processes)
 		{
 			hashSet[hashId].Clear();
@@ -25,6 +39,9 @@ namespace TaskManager
 			}
 		}
 
+		/// <summary>
+		/// Сравнивает два множества с данными процессов, выводит результат в лог
+		/// </summary>
 		public void CompareHashes()
 		{
 			if (hashSet[oldId] != null && hashSet[newId] != null)
@@ -43,6 +60,10 @@ namespace TaskManager
 			}
 		}
 
+		/// <summary>
+		/// Добавляет данные о процессах из списка процессов в необходимое множество
+		/// </summary>
+		/// <param name="processes">Список процессов</param>
 		public void Add(List<Process> processes)
 		{
 			if (hashSet[0] == null)
@@ -60,7 +81,7 @@ namespace TaskManager
 			{
 				FillHash(newId, processes);
 			}
-			
+
 		}
 	}
 }

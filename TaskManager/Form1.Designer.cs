@@ -36,7 +36,6 @@
 			this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-			this.totalProcessToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.processGridView = new System.Windows.Forms.DataGridView();
 			this.processName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +58,7 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.ownerNameLabel = new System.Windows.Forms.Label();
 			this.processInfo = new System.Windows.Forms.Button();
+			this.totalProcessToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.processGridView)).BeginInit();
@@ -94,18 +94,13 @@
 			// statusStrip1
 			// 
 			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.totalProcessToolStripStatusLabel,
-            this.toolStripStatusLabel1});
+            this.toolStripStatusLabel1,
+            this.totalProcessToolStripStatusLabel});
 			this.statusStrip1.Location = new System.Drawing.Point(0, 272);
 			this.statusStrip1.Name = "statusStrip1";
 			this.statusStrip1.Size = new System.Drawing.Size(635, 22);
 			this.statusStrip1.TabIndex = 4;
 			this.statusStrip1.Text = "statusStrip1";
-			// 
-			// totalProcessToolStripStatusLabel
-			// 
-			this.totalProcessToolStripStatusLabel.Name = "totalProcessToolStripStatusLabel";
-			this.totalProcessToolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
 			// 
 			// toolStripStatusLabel1
 			// 
@@ -149,7 +144,6 @@
 			this.processGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.processGridView.Size = new System.Drawing.Size(269, 217);
 			this.processGridView.TabIndex = 5;
-			this.processGridView.SelectionChanged += new System.EventHandler(this.processGridView_SelectionChanged);
 			// 
 			// processName
 			// 
@@ -367,6 +361,11 @@
 			this.processInfo.UseVisualStyleBackColor = true;
 			this.processInfo.Click += new System.EventHandler(this.processInfo_Click);
 			// 
+			// totalProcessToolStripStatusLabel
+			// 
+			this.totalProcessToolStripStatusLabel.Name = "totalProcessToolStripStatusLabel";
+			this.totalProcessToolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -404,7 +403,6 @@
 		private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
 		private System.Windows.Forms.StatusStrip statusStrip1;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-		private System.Windows.Forms.ToolStripStatusLabel totalProcessToolStripStatusLabel;
 		private System.Windows.Forms.DataGridView processGridView;
 		private System.Windows.Forms.Timer timer1;
 		private System.Windows.Forms.ToolStrip toolStrip1;
@@ -426,6 +424,7 @@
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Label ownerNameLabel;
 		private System.Windows.Forms.Button processInfo;
+		private System.Windows.Forms.ToolStripStatusLabel totalProcessToolStripStatusLabel;
 	}
 }
 

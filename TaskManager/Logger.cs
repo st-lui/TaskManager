@@ -8,6 +8,9 @@ using NLog.Targets;
 
 namespace TaskManager
 {
+	/// <summary>
+	/// Класс для получения объекта логгера
+	/// </summary>
 	public class LogClass
 	{
 		private static Logger log;
@@ -21,10 +24,12 @@ namespace TaskManager
 		{
 			CreateLogger();
 		}
-
+		
+		/// <summary>
+		/// Создает конфигурацию логирования и логгер
+		/// </summary>
 		static void CreateLogger()
 		{
-			// InternalLogger.LogToConsole = true;
 			LoggingConfiguration config = new LoggingConfiguration();
 			FileTarget fileTarget = new FileTarget
 			{
