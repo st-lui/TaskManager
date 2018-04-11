@@ -37,6 +37,7 @@
 			this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+			this.totalProcessToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.processGridView = new System.Windows.Forms.DataGridView();
 			this.processName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -58,7 +59,6 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.ownerNameLabel = new System.Windows.Forms.Label();
 			this.processInfo = new System.Windows.Forms.Button();
-			this.totalProcessToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.processGridView)).BeginInit();
@@ -108,6 +108,11 @@
 			this.toolStripStatusLabel1.Size = new System.Drawing.Size(71, 17);
 			this.toolStripStatusLabel1.Text = "Процессов:";
 			// 
+			// totalProcessToolStripStatusLabel
+			// 
+			this.totalProcessToolStripStatusLabel.Name = "totalProcessToolStripStatusLabel";
+			this.totalProcessToolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
+			// 
 			// processGridView
 			// 
 			this.processGridView.AllowUserToAddRows = false;
@@ -144,6 +149,7 @@
 			this.processGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.processGridView.Size = new System.Drawing.Size(269, 217);
 			this.processGridView.TabIndex = 5;
+			this.processGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.processGridView_CellDoubleClick);
 			// 
 			// processName
 			// 
@@ -360,11 +366,6 @@
 			this.processInfo.Text = "Подробнее";
 			this.processInfo.UseVisualStyleBackColor = true;
 			this.processInfo.Click += new System.EventHandler(this.processInfo_Click);
-			// 
-			// totalProcessToolStripStatusLabel
-			// 
-			this.totalProcessToolStripStatusLabel.Name = "totalProcessToolStripStatusLabel";
-			this.totalProcessToolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
 			// 
 			// Form1
 			// 

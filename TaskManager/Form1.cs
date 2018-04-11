@@ -40,16 +40,24 @@ namespace TaskManager
 		/// </summary>
 		private void UpdateInterface()
 		{
+			int scrollTo = processGridView.FirstDisplayedScrollingRowIndex;
+			long pid = -1;
+			if (processBindingSource.Current!=null)
+				pid=((Process)processBindingSource.Current).Id;
 			processList = ProcessList.TryGetInstance();
 			if (processList != null && processList.List.Count > 0)
 			{
-				int scrollTo = processGridView.FirstDisplayedScrollingRowIndex;
-				int position = processBindingSource.Position;
 				processBindingSource.Clear();
 				foreach (Process p in processList.List)
 					processBindingSource.Add(p);
 				ProcessList.Unlock();
-				processBindingSource.Position = Math.Min(processGridView.RowCount, Math.Max(0, position));
+				int position = 0;
+				for (int i = 0; i < processBindingSource.Count; i++)
+				{
+					if (((Process)processBindingSource[i]).Id == pid)
+						position = i;
+				}
+				processBindingSource.Position = position;
 				processGridView.FirstDisplayedScrollingRowIndex = Math.Min(processGridView.RowCount, Math.Max(0, scrollTo));
 				totalProcessToolStripStatusLabel.Text = processBindingSource.Count.ToString();
 			}
@@ -156,6 +164,11 @@ namespace TaskManager
 		}
 
 		private void processInfo_Click(object sender, EventArgs e)
+		{
+			GetProcessInfo();
+		}
+
+		private void processGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
 		{
 			GetProcessInfo();
 		}
